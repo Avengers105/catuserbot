@@ -33,5 +33,5 @@ async def _(event):
         except YouBlockedUserError:
             return await catevent.edit("```Unblock @BHLogoBot plox```")
         else:
-            await catbot.client.send_file(event.chat_id, response.message.media)
-            await event.delete()
+            await catevent.delete()
+            await event.client.forward_messages(event.chat_id, respond.message)
