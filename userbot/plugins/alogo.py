@@ -21,14 +21,14 @@ plugin_category = "extra"
 async def _(event):
     "To get latest ORangeFox Recover."
     link = event.pattern_match.group(1)
-    get = "alogo"
+    gen = "alogo"
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@BHLogoBot") as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=774181428)
             )
-            await conv.send_message(f"/{get} {link}")
+            await conv.send_message(f"/{gen} {link}")
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
