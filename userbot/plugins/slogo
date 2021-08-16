@@ -21,22 +21,18 @@ plugin_category = "extra"
 async def _(event):
     "To get quick spec information about device"
     link = event.pattern_match.group(1)
-    specs = "specs"
-    catevent = await edit_or_reply(event, "
-Processing
-")
-    async with event.client.conversation("@XiaomiGeeksBot") as conv:
+    get = "get"
+    catevent = await edit_or_reply(event, "```Processing```")
+    async with event.client.conversation("@BHLogoBot") as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=774181428)
             )
-            await conv.send_message(f"/{specs} {link}")
+            await conv.send_message(f"/{get} {link}")
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            return await catevent.edit("
-Unblock @XiaomiGeeksBot plox
-")
+            return await catevent.edit("```Unblock @BHLogoBot plox```")
         else:
             await catevent.delete()
             await event.client.forward_messages(event.chat_id, respond.message)
