@@ -19,7 +19,7 @@ plugin_category = "extra"
     },
 )
 async def _(event):
-    "To get logos"
+    "To get latest ORangeFox Recover."
     link = event.pattern_match.group(1)
     get = "alogo"
     catevent = await edit_or_reply(event, "```Processing```")
@@ -28,8 +28,9 @@ async def _(event):
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=774181428)
             )
-            await catbot.client.send_message(chat, reply_message)
+            await conv.send_message(f"/{get} {link}")
             respond = await response
+            await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             return await catevent.edit("```Unblock @BHLogoBot plox```")
         else:
