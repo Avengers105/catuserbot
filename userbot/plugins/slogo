@@ -1,0 +1,42 @@
+from telethon import events
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+
+from userbot import catub
+
+from ..core.managers import edit_or_reply
+
+plugin_category = "extra"
+
+
+@catub.cat_cmd(
+    pattern="slogo ([\get]*)",
+    command=("slogo", plugin_category),
+    info={
+        "header": "Gives Logos To Given Tests",
+        "description": "Gives Beautiful Logos",
+        "usage": "{tr}slogo <codename>",
+        "examples": "{tr}slogo Avengers",
+    },
+)
+async def _(event):
+    "To get quick spec information about device"
+    link = event.pattern_match.group(1)
+    specs = "specs"
+    catevent = await edit_or_reply(event, "
+Processing
+")
+    async with event.client.conversation("@XiaomiGeeksBot") as conv:
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=774181428)
+            )
+            await conv.send_message(f"/{specs} {link}")
+            respond = await response
+            await event.client.send_read_acknowledge(conv.chat_id)
+        except YouBlockedUserError:
+            return await catevent.edit("
+Unblock @XiaomiGeeksBot plox
+")
+        else:
+            await catevent.delete()
+            await event.client.forward_messages(event.chat_id, respond.message)
