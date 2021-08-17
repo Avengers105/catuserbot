@@ -35,5 +35,6 @@ async def _(event):
         except YouBlockedUserError:
             return await catevent.edit("```Please Unblock @BHLogoBot plox```")
         else:
+            await asyncio.sleep(0.10)
             await catevent.delete()
             await event.client.forward_messages(event.chat_id, respond.message)
