@@ -36,3 +36,4 @@ async def _(event):
         else:
             await catevent.delete()
             await event.client.forward_messages(event.chat_id, respond.message.media)
+            sleep_threshold=10
