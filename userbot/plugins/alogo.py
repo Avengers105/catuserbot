@@ -32,8 +32,8 @@ async def _(event):
             respond = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            return await catevent.edit("```Unblock @BHLogoBot plox```")
+            return await catevent.edit("```Please Unblock @BHLogoBot plox```")
         else:
             await catevent.delete()
-            await event.client.forward_messages(event.chat_id, respond.message.media)
+            await event.client.forward_messages(event.chat_id, respond.message)
             sleep_threshold=10
