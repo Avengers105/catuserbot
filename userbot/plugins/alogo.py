@@ -12,14 +12,14 @@ plugin_category = "extra"
     pattern="alogo ([\s\S]*)",
     command=("alogo", plugin_category),
     info={
-        "header": "To get Logos",
-        "description": "To get logo",
-        "usage": "{tr}alogo <codename>",
+        "header": "This Will Give Beautiful Logos",
+        "description": "This Will Give Beautiful Logos With the Help of @BHLogoBot",
+        "usage": "{tr}alogo <name>",
         "examples": "{tr}alogo Avengers",
     },
 )
 async def _(event):
-    "To get latest ORangeFox Recover."
+    "This Will Give Beautiful Logos"
     link = event.pattern_match.group(1)
     gen = "alogo"
     catevent = await edit_or_reply(event, "```Processing```")
