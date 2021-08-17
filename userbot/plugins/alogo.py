@@ -9,24 +9,24 @@ plugin_category = "extra"
 
 
 @catub.cat_cmd(
-    pattern="alogo ([\s\S]*)",
-    command=("alogo", plugin_category),
+    pattern="gen ([\s\S]*)",
+    command=("gen", plugin_category),
     info={
         "header": "This Will Give Beautiful Logos",
         "description": "This Will Give Beautiful Logos With the Help of @BHLogoBot",
-        "usage": "{tr}alogo <name>",
-        "examples": "{tr}alogo Avengers",
+        "usage": "{tr}gen <name>",
+        "examples": "{tr}gen Avengers",
     },
 )
 async def _(event):
     "This Will Give Beautiful Logos"
     link = event.pattern_match.group(1)
-    gen = "alogo"
+    gen = "gen"
     catevent = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation("@BHLogoBot") as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=774181428)
+                events.NewMessage(incoming=True, from_users=1532727866)
             )
             await conv.send_message(f"/{gen} {link}")
             respond = await response
