@@ -1,3 +1,4 @@
+import asyncio
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
@@ -36,4 +37,3 @@ async def _(event):
         else:
             await catevent.delete()
             await event.client.forward_messages(event.chat_id, respond.message)
-            sleep_threshold=10
