@@ -35,4 +35,4 @@ async def _(event):
             return await catevent.edit("```Unblock @BHLogoBot plox```")
         else:
             await catevent.delete()
-            await event.client.forward_messages(event.chat_id, respond.message.media)
+            await event.client.sent_file(event.chat_id, respond.message.media)
