@@ -29,9 +29,6 @@ plugin_category = "extra"
             "{tr}dlogo Mine",
             "{tr}ilogo Mine",
         ],
-        "note":[
-             "You Must Join @BotzHub to Use this Cammand.",
-        ],
     },
 )
 async def _(event):
