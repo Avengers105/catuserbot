@@ -18,8 +18,8 @@ plugin_category = "extra"
     info={
         "header": "To make logo of given text.",
         "flag": {
-            "d": "To make logo of given text document format",
-            "i": "To make logo of given text incompressed image format",
+            "d": "To make logo of given text document as format",
+            "i": "To make logo of given text incompressed as image format",
         },
         "usage": [
             "{tr}dlogo <text>",
