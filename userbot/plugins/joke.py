@@ -23,5 +23,8 @@ plugin_category = "fun"
     },
 )
 async def jokeapi(event):
+    "Just For Fun"
+    input_str = event.pattern_match.group(1)
+    jokeapi = jokeapi(source="https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit")
 
 
