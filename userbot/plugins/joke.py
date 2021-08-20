@@ -1,4 +1,5 @@
 import os
+import random
 
 import requests
 
@@ -23,8 +24,8 @@ plugin_category = "fun"
 async def joke(event):
     "Just For Fun"
     await edit_or_reply(event, "`Processing...`",)
-    r = requests.get(
-        f"https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+r = requests.get(
+    f"https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
 
 
 
