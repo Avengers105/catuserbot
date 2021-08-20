@@ -11,6 +11,12 @@ from ..helpers.utils import reply_id
 
 plugin_category = "fun"
 
+async def random_joke():
+    pgno = random.randint(1, 100)
+    jokeurl = f"https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+    results = await extract_joke(jokeurl)
+    return random.choice(results)
+
 
 @catub.cat_cmd(
     pattern="joke(?:\s|$)([\s\S]*)",
