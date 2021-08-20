@@ -2,8 +2,6 @@ import os
 
 import requests
 
-import jokeapi
-
 from userbot import catub
 
 from ..Config import Config
@@ -22,9 +20,11 @@ plugin_category = "fun"
         "usage": "{tr}joke",
     },
 )
-async def jokeapi(event):
+async def joke(event):
     "Just For Fun"
-    input_str = event.pattern_match.group(1)
-    jokeapi = jokeapi(source="https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit")
+    await edit_or_reply(event, "`Processing...`",)
+    r = requests.get(
+        f"https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+
 
 
