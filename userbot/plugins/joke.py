@@ -31,7 +31,6 @@ async def joke(event):
     "Just For Fun"
     await edit_or_reply(event, "`Processing...`",)
     await event.delete()
-else:
      try:
          response = await random_joke
      except Exception:
