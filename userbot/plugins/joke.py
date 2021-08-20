@@ -30,8 +30,12 @@ async def random_joke():
 async def joke(event):
     "Just For Fun"
     await edit_or_reply(event, "`Processing...`",)
-r = requests.get(
-    f"https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+    await event.delete()
+    try:
+       response = await random_joke
+    except Exception:
+        return await edit_delete(event, "`Sorry Zero results found`", 5)
+    await edit_or_reply(event, response, parse_mode=parse_pre)
 
 
 
