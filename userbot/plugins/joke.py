@@ -31,7 +31,7 @@ async def joke(event):
     "Just For Fun"
     await edit_or_reply(event, "`Processing...`",)
     await event.delete()
-    try:
+    return:
        response = await random_joke
     except Exception:
         return await edit_delete(event, "`Sorry Zero results found`", 5)
