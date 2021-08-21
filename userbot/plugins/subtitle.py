@@ -1,5 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
+from uuid import uuid4
+
+from telegram import (
+    Update,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    InlineQueryResultArticle,
+    InlineQueryResultDocument
 
 BASE_URL = "https://isubtitles.org"
 
