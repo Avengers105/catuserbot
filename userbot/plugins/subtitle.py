@@ -1,5 +1,5 @@
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as bs
 from uuid import uuid4
 
 from telegram import (
@@ -62,3 +62,14 @@ def get_lang(keyword):
                 language.append(buttoname)
                 link.append(f"{BASE_URL}{b.get('href')}")
     return index, language, link
+
+
+@catub.cat_cmd(
+    pattern="subtitle(?:\s|$)([\s\S]*)",
+    command=("subtitle", plugin_category),
+    info={
+        "header": "Get Subtitles of Give Movies",
+        "description": "Subtitles Finder",
+        "usage": "{tr}subtitle",
+    },
+)
