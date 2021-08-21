@@ -73,3 +73,6 @@ def get_lang(keyword):
         "usage": "{tr}subtitle",
     },
 )
+async def subtitle(event):
+    "Get Subtitles of Given Movies"
+    input_str = event.pattern_match.group(1)
