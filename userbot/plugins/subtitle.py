@@ -8,6 +8,10 @@ from telegram import (
     InlineKeyboardMarkup,
     InlineQueryResultArticle,
     InlineQueryResultDocument
+    Update,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup
+
 
 BASE_URL = "https://isubtitles.org"
 
