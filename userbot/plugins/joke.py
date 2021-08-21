@@ -1,6 +1,6 @@
 import os
 import random
-
+from bs4 import BeautifulSoup
 import requests
 
 from userbot import catub
@@ -11,10 +11,19 @@ from ..helpers.utils import reply_id
 
 plugin_category = "fun"
 
-async def random_joke():
+async def extract_jokeContainer(url):
+    results = []
+    request = requests.get(url).text
+    soup = BeautifulSoup(request, "html.parser")
+    for jokeContainer in soup.find_all("div", class_="jokeContainer"):
+        response = jokeContainer.find("div", {"class": "jokeText"}).text
+        results.append(response.replace("\n", " ").strip())
+    return results
+
+async def random_jokeContainer():
     pgno = random.randint(1, 100)
-    jokeurl = f"https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
-    results = await extract_joke(jokeurl)
+    jokeContainerurl = f"https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit"
+    results = await extract_jokeContainer(jokeContainerurl)
     return random.choice(results)
 
 
@@ -27,15 +36,13 @@ async def random_joke():
         "usage": "{tr}joke",
     },
 )
-async def joke(event):
+async def random_jokeContainer(event):
     "Just For Fun"
-    await edit_or_reply(event, "`Processing...`",)
-    await event.delete()
-     try:
-         response = await random_joke
-     except Exception:
-         return await edit_delete(event, "`Sorry Zero results found`", 5)
-     await edit_or_reply(event, response, parse_mode=parse_pre)
+    try:
+        response = await random_jokeContainer()
+    except Exception:
+        return await edit_delete(event, "`Sorry Zero results found`", 5)
+    await edit_or_reply(event, response, parse_mode=parse_pre)
 
 
 
